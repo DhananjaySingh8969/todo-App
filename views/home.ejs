@@ -12,66 +12,67 @@
 	 		<h1>TODO App</h1>
 	 	</header>
       	<main>
-      	    <section class="discription">
-      	    	<div class="form-group">
-    				<label class="label-text" for="exampleFormControlTextarea1">DESCRIPTION</label>
-    				<textarea placeholder="enter description.." class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-  				</div>
-      	    </section>
+		  <form action="/add-task" method="POST" id="addTask">
+				<section class="discription">
+					<div class="form-group">
+						<label class="label-text" for="exampleFormControlTextarea1">DESCRIPTION</label>
+						<textarea required name="description" placeholder="enter description.." class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+					</div>
+				</section>
 
 
-      	    <section class="category-date-container">
-      	    	<div class="row">
-    				<div class="col">
-      					<div class="form-group">
-    						    <label class="label-text" for="category-options">CATEGORY</label>
-    							<select class="form-control" id="category-options">
-      								<option selected disabled="">Choose a category</option>
-      								<option>SCHOOL</option>
-      								<option>WORK</option>
-      								<option>PERSONAL</option>
-      								<option>DAILY</option>
-      								<option>MISC</option>
-    							</select>
-  						</div>
-    				</div>
-    				<div class="col">
-    					<label class="label-text" for="exampleFormControlSelect2">DUE DATE</label>
-      					<input id="date" type="date" class="form-control" placeholder="Last name">
-    				</div>
-  				</div>
-      	    </section>
-
-
-      	    <section class="add-delete-btns-container">
-      	    	<div >
-      	    		<button type="button" class="btn btn-dark"><i class="fas fa-plus mg5px"></i> ADD TASK</button>
-      	    	    <button type="button" class="btn btn-danger"><i class="far mg5px fa-trash-alt"></i> DELETE</button>
-      	    	</div>
-      	    	
-      	    </section>
-
-
-      	    <section class="list-container">
-      	    	<ul class="list-group">
-					  <% for(let task of tasks){ %>
-						<li class="list-group-item">
-							<div class="date-and-details">
-								<div class="check-btn">
-								  <input class="inp" type="checkbox">
-								</div>
-								<div >
-									<p class="discription-display"> <%= task.description %>   </p>
-									<p ><i class="fas fa-calendar-alt"></i> <%= task.date %> </p>
-								</div>
+				<section class="category-date-container">
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+									<label class="label-text" for="category-options">CATEGORY</label>
+									<select  name="category" class="form-control" id="category-options" required>
+										<option value ="" selected disabled>Choose a category</option>
+										<option>SCHOOL</option>
+										<option>WORK</option>
+										<option>PERSONAL</option>
+										<option>HOME</option>
+										<option>MISC</option>
+									</select>
 							</div>
-							<div class="type-tag">
-								<p class="<%= task.category.toLowerCase()%>"><%= task.category %></p>
-							</div>
-						</li>
-					  <% } %>
-				</ul>
-      	    </section>
+						</div>
+						<div class="col">
+							<label class="label-text" for="exampleFormControlSelect2">DUE DATE</label>
+							<input required name="date" id="date" type="date" class="form-control" placeholder="Last name">
+						</div>
+					</div>
+				</section>
+			</form>
+				<section class="add-delete-btns-container">
+					<div >
+						<button form="addTask" type="submit" class="btn btn-dark"><i class="fas fa-plus mg5px"></i> ADD TASK</button>
+						<button form="deleteTask" type="submit" class="btn btn-danger"><i class="far mg5px fa-trash-alt"></i> DELETE</button>
+					</div>
+					
+				</section>
+			
+		    <form action="/task-delete" method="POST" id="deleteTask">
+					<section class="list-container">
+						<ul class="list-group">
+							<% for(let task of tasks){ %>
+								<li class="list-group-item">
+									<div class="date-and-details">
+										<div class="check-btn">
+										<input class="inp" type="checkbox" name="taskId" value="<%=task.id%>">
+										</div>
+										<div >
+											<p class="discription-display"> <%= task.description %>   </p>
+											<p ><i class="fas fa-calendar-alt"></i> <%= task.date %> </p>
+										</div>
+									</div>
+									<div class="type-tag">
+										<p class="<%= task.category.toLowerCase()%>"><%= task.category %></p>
+									</div>
+								</li>
+							<% } %>
+						</ul>
+					</section>
+			</form>
       	</main>
 	 </div>
 </body>
