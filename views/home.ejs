@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 	<title><%=title%></title>
@@ -16,7 +16,7 @@
 				<section class="discription">
 					<div class="form-group">
 						<label class="label-text" for="exampleFormControlTextarea1">DESCRIPTION</label>
-						<textarea required name="description" placeholder="enter description.." class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+						<textarea maxlength="150" required name="description" placeholder="enter description.." class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
 					</div>
 				</section>
 
@@ -46,7 +46,7 @@
 				<section class="add-delete-btns-container">
 					<div >
 						<button form="addTask" type="submit" class="btn btn-dark"><i class="fas fa-plus mg5px"></i> ADD TASK</button>
-						<button form="deleteTask" type="submit" class="btn btn-danger"><i class="far mg5px fa-trash-alt"></i> DELETE</button>
+						<button form="deleteTask" type="submit" class="btn btn-danger"><i class="far mg5px fa-trash-alt"></i> DELETE TASKS</button>
 					</div>
 					
 				</section>
@@ -58,7 +58,7 @@
 								<li class="list-group-item">
 									<div class="date-and-details">
 										<div class="check-btn">
-										<input class="inp" type="checkbox" name="taskId" value="<%=task.id%>">
+										<input class="inp" type="checkbox" name="taskId" value="<%= task._id %>">
 										</div>
 										<div >
 											<p class="discription-display"> <%= task.description %>   </p>
